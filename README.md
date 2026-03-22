@@ -3,12 +3,17 @@
 
 ---
 
-##  Overview  
+##  Overview
 
 This project implements the **CallHub Phone Directory Management System** as part of CS-432 Assignment 2.  
 The system provides a complete solution for managing member information with secure access control, efficient data retrieval, and auditing mechanisms.
 
-Key highlights of the system include:
+* **Module A: Lightweight DBMS with B+ Tree Index:** A custom, in-memory database management system built from scratch. It uses a custom B+ Tree data structure to solve the inefficiencies of linear search (O(n)), enabling ultra-low latency contact lookups (O(log n)) and efficient range queries for scaling applications.
+* **Module B: Backend Application & UI:** A complete Flask-based backend providing a RESTful API, web interface, Role-Based Access Control (RBAC), and database auditing mechanisms.
+  
+### Key Highlights
+- Custom B+ Tree indexing vs. Brute-force linear search benchmarking
+- Graphviz-based visualization of tree structure
 - Role-Based Access Control (RBAC)  
 - RESTful API development using Flask  
 - Web-based user interface  
@@ -22,7 +27,14 @@ Key highlights of the system include:
 ```
 Assignment2/
 ├─ Module A/
-│  └─ b+tree.py
+│  ├─ database/
+│  │  ├─ bplustree.py              
+│  │  ├─ bruteforce.py             
+│  │  ├─ db_manager.py  
+│  │  ├─ performance_analyzer.py             
+│  │  ├─ table.py                  
+│  ├─ requirements.txt
+│  ├─ report.ipynb
 ├─ Module B/
 │  ├─ Module_B_Report.md
 │  ├─ benchmarks/ (# here json files will be saved)
@@ -65,11 +77,35 @@ Assignment2/
 - Python 3.10 or higher  
 - pip  
 - Virtual environment 
-- MySQL (or database configured in `config.py`)  
+- MySQL (or database configured in `config.py`)
+- Optional (for Module A visualizations): Graphviz installed on your system.  
 
 ---
+## Setup Instructions for Module A
 
-##  Setup Instructions  
+### 1. Navigate to Module A Directory
+```bash
+cd "Assignment2/Module A"
+```
+
+### 2. Create Virtual Environment
+```bash
+python -m venv .venv
+```
+
+### 3. Activate Virtual Environment
+
+**Windows:**
+```bash
+.\.venv\Scripts\activate
+```
+
+### 4. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+##  Setup Instructions  for module B
 
 ### 1. Navigate to Backend Directory  
 ```bash
